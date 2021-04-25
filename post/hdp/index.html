@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Machine Learning with Python: Classification- Heart Disease Prediction | Home</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="Machine Learning - Classification">
+    <meta name="generator" content="Hugo 0.80.0" />
+    
+    
+      <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+    
+
+    
+
+  
+  
+    <link rel="stylesheet" href="/ananke/dist/main.css_5c99d70a7725bacd4c701e995b969fea.css" >
+  
+
+
+
+
+    
+      
+
+    
+
+    
+    
+    <meta property="og:title" content="Machine Learning with Python: Classification- Heart Disease Prediction" />
+<meta property="og:description" content="Machine Learning - Classification" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/hdp/" />
+<meta property="article:published_time" content="2020-12-04T17:56:05-04:00" />
+<meta property="article:modified_time" content="2020-12-04T17:56:05-04:00" /><meta property="og:site_name" content="Home" />
+<meta itemprop="name" content="Machine Learning with Python: Classification- Heart Disease Prediction">
+<meta itemprop="description" content="Machine Learning - Classification">
+<meta itemprop="datePublished" content="2020-12-04T17:56:05-04:00" />
+<meta itemprop="dateModified" content="2020-12-04T17:56:05-04:00" />
+<meta itemprop="wordCount" content="2051">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Machine Learning with Python: Classification- Heart Disease Prediction"/>
+<meta name="twitter:description" content="Machine Learning - Classification"/>
+
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS_HTML">
+</script>
+
+  </head>
+
+  <body class="ma0 avenir bg-near-white">
+
+    
+   
+  
+
+  
+  
+  <header class="cover bg-top" style="background-image: url('images/ch6.jpg');">
+    <div class="pb3-m pb6-l bg-black-60">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="/" class="f3 fw2 hover-white no-underline white-90 dib">
+      
+        Home
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+        <ul class="pl0 mr3">
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/about/" title="About Me page">
+              About Me
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/contact/" title="Contact page">
+              Contact
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/post/" title="Projects page">
+              Projects
+            </a>
+          </li>
+          
+        </ul>
+      
+      
+
+
+
+
+
+
+
+<a href="https://www.linkedin.com/in/issam-b-alameddine-320915204/" target="_blank" class="link-transition linkedin link dib z-999 pt3 pt0-l mr1" title="LinkedIn link" rel="noopener" aria-label="follow on LinkedIn——Opens in a new window">
+  <svg  height="32px"  style="enable-background:new 0 0 65 65;" version="1.1" viewBox="0 0 65 65" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <path d="M50.837,48.137V36.425c0-6.275-3.35-9.195-7.816-9.195  c-3.604,0-5.219,1.983-6.119,3.374V27.71h-6.79c0.09,1.917,0,20.427,0,20.427h6.79V36.729c0-0.609,0.044-1.219,0.224-1.655  c0.49-1.22,1.607-2.483,3.482-2.483c2.458,0,3.44,1.873,3.44,4.618v10.929H50.837z M22.959,24.922c2.367,0,3.842-1.57,3.842-3.531  c-0.044-2.003-1.475-3.528-3.797-3.528s-3.841,1.524-3.841,3.528c0,1.961,1.474,3.531,3.753,3.531H22.959z M34,64  C17.432,64,4,50.568,4,34C4,17.431,17.432,4,34,4s30,13.431,30,30C64,50.568,50.568,64,34,64z M26.354,48.137V27.71h-6.789v20.427  H26.354z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/>
+</svg>
+
+<span class="new-window"><svg  height="8px"  style="enable-background:new 0 0 1000 1000;" version="1.1" viewBox="0 0 1000 1000" width="8px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+<path d="M598 128h298v298h-86v-152l-418 418-60-60 418-418h-152v-86zM810 810v-298h86v298c0 46-40 86-86 86h-596c-48 0-86-40-86-86v-596c0-46 38-86 86-86h298v86h-298v596h596z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/>
+</svg>
+</span></a>
+
+
+<a href="https://github.com/vxky19" target="_blank" class="link-transition github link dib z-999 pt3 pt0-l mr1" title="Github link" rel="noopener" aria-label="follow on Github——Opens in a new window">
+  <svg  height="32px"  style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+  <path d="M256,32C132.3,32,32,134.8,32,261.7c0,101.5,64.2,187.5,153.2,217.9c11.2,2.1,15.3-5,15.3-11.1   c0-5.5-0.2-19.9-0.3-39.1c-62.3,13.9-75.5-30.8-75.5-30.8c-10.2-26.5-24.9-33.6-24.9-33.6c-20.3-14.3,1.5-14,1.5-14   c22.5,1.6,34.3,23.7,34.3,23.7c20,35.1,52.4,25,65.2,19.1c2-14.8,7.8-25,14.2-30.7c-49.7-5.8-102-25.5-102-113.5   c0-25.1,8.7-45.6,23-61.6c-2.3-5.8-10-29.2,2.2-60.8c0,0,18.8-6.2,61.6,23.5c17.9-5.1,37-7.6,56.1-7.7c19,0.1,38.2,2.6,56.1,7.7   c42.8-29.7,61.5-23.5,61.5-23.5c12.2,31.6,4.5,55,2.2,60.8c14.3,16.1,23,36.6,23,61.6c0,88.2-52.4,107.6-102.3,113.3   c8,7.1,15.2,21.1,15.2,42.5c0,30.7-0.3,55.5-0.3,63c0,6.1,4,13.3,15.4,11C415.9,449.1,480,363.1,480,261.7   C480,134.8,379.7,32,256,32z"/>
+</svg>
+
+<span class="new-window"><svg  height="8px"  style="enable-background:new 0 0 1000 1000;" version="1.1" viewBox="0 0 1000 1000" width="8px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+<path d="M598 128h298v298h-86v-152l-418 418-60-60 418-418h-152v-86zM810 810v-298h86v298c0 46-40 86-86 86h-596c-48 0-86-40-86-86v-596c0-46 38-86 86-86h298v86h-298v596h596z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/>
+</svg>
+</span></a>
+
+
+
+
+
+
+
+
+    </div>
+  </div>
+</nav>
+
+      <div class="tc-l pv6 ph3 ph4-ns">
+        
+          <h1 class="f2 f1-l fw2 white-90 mb0 lh-title">Machine Learning with Python: Classification- Heart Disease Prediction</h1>
+          
+            <h2 class="fw1 f5 f3-l white-80 measure-wide-l center lh-copy mt3 mb4">
+              Machine Learning - Classification
+            </h2>
+          
+        
+      </div>
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  <article class="flex-l flex-wrap justify-between mw8 center ph3">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked">
+          
+        PROJECTS
+      </aside>
+      
+
+
+
+
+  <div id="sharing" class="mt3">
+
+    
+    <a href="https://www.facebook.com/sharer.php?u=/post/hdp/" class="facebook no-underline" aria-label="share on Facebook">
+      <svg height="32px"  style="enable-background:new 0 0 67 67;" version="1.1" viewBox="0 0 67 67" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M28.765,50.32h6.744V33.998h4.499l0.596-5.624h-5.095  l0.007-2.816c0-1.466,0.14-2.253,2.244-2.253h2.812V17.68h-4.5c-5.405,0-7.307,2.729-7.307,7.317v3.377h-3.369v5.625h3.369V50.32z   M33,64C16.432,64,3,50.569,3,34S16.432,4,33,4s30,13.431,30,30S49.568,64,33,64z" style="fill-rule:evenodd;clip-rule:evenodd;"/></svg>
+
+    </a>
+
+    
+    
+    <a href="https://twitter.com/share?url=/post/hdp/&amp;text=Machine%20Learning%20with%20Python:%20Classification-%20Heart%20Disease%20Prediction" class="twitter no-underline" aria-label="share on Twitter">
+      <svg height="32px"  style="enable-background:new 0 0 67 67;" version="1.1" viewBox="0 0 67 67" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M37.167,22.283c-2.619,0.953-4.274,3.411-4.086,6.101  l0.063,1.038l-1.048-0.127c-3.813-0.487-7.145-2.139-9.974-4.915l-1.383-1.377l-0.356,1.017c-0.754,2.267-0.272,4.661,1.299,6.271  c0.838,0.89,0.649,1.017-0.796,0.487c-0.503-0.169-0.943-0.296-0.985-0.233c-0.146,0.149,0.356,2.076,0.754,2.839  c0.545,1.06,1.655,2.097,2.871,2.712l1.027,0.487l-1.215,0.021c-1.173,0-1.215,0.021-1.089,0.467  c0.419,1.377,2.074,2.839,3.918,3.475l1.299,0.444l-1.131,0.678c-1.676,0.976-3.646,1.526-5.616,1.568  C19.775,43.256,19,43.341,19,43.405c0,0.211,2.557,1.397,4.044,1.864c4.463,1.377,9.765,0.783,13.746-1.568  c2.829-1.673,5.657-5,6.978-8.221c0.713-1.716,1.425-4.851,1.425-6.354c0-0.975,0.063-1.102,1.236-2.267  c0.692-0.678,1.341-1.419,1.467-1.631c0.21-0.403,0.188-0.403-0.88-0.043c-1.781,0.636-2.033,0.551-1.152-0.402  c0.649-0.678,1.425-1.907,1.425-2.267c0-0.063-0.314,0.042-0.671,0.233c-0.377,0.212-1.215,0.53-1.844,0.72l-1.131,0.361l-1.027-0.7  c-0.566-0.381-1.361-0.805-1.781-0.932C39.766,21.902,38.131,21.944,37.167,22.283z M33,64C16.432,64,3,50.569,3,34S16.432,4,33,4  s30,13.431,30,30S49.568,64,33,64z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/></svg>
+
+    </a>
+
+    
+    <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=/post/hdp/&amp;title=Machine%20Learning%20with%20Python:%20Classification-%20Heart%20Disease%20Prediction" class="linkedin no-underline" aria-label="share on LinkedIn">
+      <svg  height="32px"  style="enable-background:new 0 0 65 65;" version="1.1" viewBox="0 0 65 65" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <path d="M50.837,48.137V36.425c0-6.275-3.35-9.195-7.816-9.195  c-3.604,0-5.219,1.983-6.119,3.374V27.71h-6.79c0.09,1.917,0,20.427,0,20.427h6.79V36.729c0-0.609,0.044-1.219,0.224-1.655  c0.49-1.22,1.607-2.483,3.482-2.483c2.458,0,3.44,1.873,3.44,4.618v10.929H50.837z M22.959,24.922c2.367,0,3.842-1.57,3.842-3.531  c-0.044-2.003-1.475-3.528-3.797-3.528s-3.841,1.524-3.841,3.528c0,1.961,1.474,3.531,3.753,3.531H22.959z M34,64  C17.432,64,4,50.568,4,34C4,17.431,17.432,4,34,4s30,13.431,30,30C64,50.568,50.568,64,34,64z M26.354,48.137V27.71h-6.789v20.427  H26.354z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/>
+</svg>
+
+    </a>
+  </div>
+
+
+      <h1 class="f1 athelas mt3 mb1">Machine Learning with Python: Classification- Heart Disease Prediction</h1>
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2020-12-04T17:56:05-04:00">December 4, 2020</time>
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l"><p>Heart disease is the leading cause of death
+worldwide and has been so for the past 15 years [1]. This project
+uses K-Nearest Neighbor, Random Forest Classifier and
+Support Vector Machines, in an attempt to find the best model
+that can classify whether a patient has heart disease or not based
+on various features such as resting blood pressure, age and sex
+to name a few. Python was used for programming using its
+various Machine Learning libraries.</p>
+<p>Links:</p>
+<ul>
+<li><a href="https://www.kaggle.com/ronitf/heart-disease-uci">Dataset</a></li>
+<li><a href="https://github.com/vxky19/7072-ML/blob/main/7072cw-code-python.ipynb">Source Code</a></li>
+</ul>
+<h2 id="___introduction___"><em><strong>Introduction</strong></em></h2>
+<p>Heart disease is a huge concern as it is the leading cause of
+death globally. There are different types of heart diseases such
+as coronary artery disease, congenital heart defects,
+arrhythmia and myocardial infarction. There are indicators
+that hint if there is a heart disease or not. These include chest
+pain (typical, atypical, non-anginal, asymptotic), fasting blood
+sugar where anything above 100 mg/dl increases the risk of
+heart disease by 300% [2], serum cholesterol which causes the
+arteries to become stiff, resting blood pressure and ST depression which is closely associated with a high risk of
+cardiac events [3]. Each indicator on its own does not
+necessarily reflect that a heart disease is present. An
+experienced medical professional can analyze the combined
+results and deduce whether a heart disease is present or not.
+However, this is time consuming and the diagnosis might be
+wrong. It is more efficient to use Machine Learning (ML) to
+diagnose large number of patients automatically, where the
+medical professional will only intervene when there is a
+positive diagnosis. This project will analyze and compare the
+results of three different ML models: K-Nearest Neighbor
+(KNN), Random Forest Classifier and Support Vector
+Machines (SVM)</p>
+<h2 id="___the-dataset___"><em><strong>The Dataset</strong></em></h2>
+<p>The original data set available on the UCI ML repository
+contains 76 attributes. However, a subset data set of 13
+features is the only one that has been used by ML researchers
+[4]. This dataset is also available on Kaggle [5], which is used
+in this article. The dataset does not contain any missing values,
+303 rows, and one duplicated row. The last column is the class
+that represents whether the patient has a heart disease (1) or
+not (0).</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Dataset Features</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+</table>
+<!-- raw HTML omitted -->
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Code</th>
+<th style="text-align:center">Name</th>
+<th style="text-align:center">Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">age</td>
+<td style="text-align:center">Age</td>
+<td style="text-align:center">Integer</td>
+</tr>
+<tr>
+<td style="text-align:center">sex</td>
+<td style="text-align:center">Sex</td>
+<td style="text-align:center">Categorical (0,1)</td>
+</tr>
+<tr>
+<td style="text-align:center">cp</td>
+<td style="text-align:center">Chest Pain</td>
+<td style="text-align:center">Categorical (0-4)</td>
+</tr>
+<tr>
+<td style="text-align:center">trestbps</td>
+<td style="text-align:center">Resting Blood Pressure</td>
+<td style="text-align:center">Integer</td>
+</tr>
+<tr>
+<td style="text-align:center">chol</td>
+<td style="text-align:center">Serum Cholesterol</td>
+<td style="text-align:center">Integer</td>
+</tr>
+<tr>
+<td style="text-align:center">fbs</td>
+<td style="text-align:center">Fasting Blood Sugar</td>
+<td style="text-align:center">Categorical (0,1)</td>
+</tr>
+<tr>
+<td style="text-align:center">restecg</td>
+<td style="text-align:center">‎‎‎‎‎‎‎‎‎ Resting Electrocardiographic Results‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎</td>
+<td style="text-align:center">Categorical (0-2)</td>
+</tr>
+<tr>
+<td style="text-align:center">thalch</td>
+<td style="text-align:center">Maximum Heart Rate</td>
+<td style="text-align:center">Integer</td>
+</tr>
+<tr>
+<td style="text-align:center">exang</td>
+<td style="text-align:center">Exercise Induced Angina</td>
+<td style="text-align:center">Categorical (0,1)</td>
+</tr>
+<tr>
+<td style="text-align:center">oldpeak</td>
+<td style="text-align:center">ST exercise relative to rest</td>
+<td style="text-align:center">Float</td>
+</tr>
+<tr>
+<td style="text-align:center">slope</td>
+<td style="text-align:center">Slope of peak exercise ST segment</td>
+<td style="text-align:center">Categorical (0-2)</td>
+</tr>
+<tr>
+<td style="text-align:center">ca</td>
+<td style="text-align:center">No. of major vessels by fluoroscopy</td>
+<td style="text-align:center">Categorical(0-3)</td>
+</tr>
+<tr>
+<td style="text-align:center">thal</td>
+<td style="text-align:center">Thalassemia</td>
+<td style="text-align:center">Categorical(3,6,7)</td>
+</tr>
+</tbody>
+</table>
+<!-- raw HTML omitted -->
+<h2 id="___dataset-preprocessing-feature-extraction-and-dimensionality-reduction___"><em><strong>Dataset Preprocessing, Feature Extraction and Dimensionality Reduction</strong></em></h2>
+<p>Only one duplicate row was detected and removed and there aren’t
+any missing values in the data set. Skewness for all features
+are under 1 (except for ‘chol’ at 1.15). Since all features have
+different units and the ranges vary drastically, it is essential to
+normalize the features to a common scale between zero and
+one. There are three different types of normalization:
+MinMaxScaler, RobustScaler and StandardScaler. Doing this
+is important when trying to dimensionally reduce the data. In
+this project, Principal Component Analysis (PCA) was used to
+reduce dimensionality. In an attempt to find the best
+normalization method, each was tested on a PCA to find the
+least number of dimensions that describe 90% of the variance
+of the data set.</p>
+<!-- raw HTML omitted -->
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Normalization Method ‎‎‎‎‎‎‎‎   ‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎  ‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎</th>
+<th style="text-align:center">Minimum Dimensions to describe 90% of variance</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">MinMaxScaler</td>
+<td style="text-align:center">7</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center">Robust Scaler</td>
+<td style="text-align:center">8</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center">Standard Scaler</td>
+<td style="text-align:center">9</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<!-- raw HTML omitted -->
+<p>The MinMax Scaler produced the best results. Since this data
+set is a subset of the original one with 76 attributes, it is
+understandable that the dimensions cannot be reduced further.</p>
+<figure>
+    <img src="/images/pca1-1.png"/> <figcaption>
+            <h4>MinMax Scaler: 7 dimensions describe 90% of the dataset </h4>
+        </figcaption>
+</figure>
+
+<p>Before performing PCA, feature selection was performed
+using SelectKBest to reduce the total number of features to a
+minimum. The figure below shows a plot of how accuracy, F1
+score, and recall vary with number of features. In order to
+ensure reliable results, these scores are obtained using cross
+validation on the training set</p>
+<figure>
+    <img src="/images/nice.png"/> <figcaption>
+            <h4>Plot of accuracy, recall and F1 score vs Number of Features</h4>
+        </figcaption>
+</figure>
+
+<p>It can be seen from the figure above, only five features best
+describe the dataset. These features are ca, cp, exange, oldpeak
+and thalach. A new data set with these five features is created
+and PCA is performed. Fig. 3. shows that three dimensions are
+sufficient to preserve 95% of the variance.</p>
+<figure>
+    <img src="/images/PCA.png"/> <figcaption>
+            <h4> ‍  ‍  ‍  ‍  ‍  ‍ ‍  ‍  ‍  ‍  ‍  ‍  ‍  ‍  ‍  ‍  ‍  PCA vs Cumulative Explained Variance.</h4>
+        </figcaption>
+</figure>
+
+<p>Therefore, the data set is reduced to 5 features and 3
+dimensions.</p>
+<p><em><strong>Machine Learning Classification Models</strong></em></p>
+<p>There are many classification models available. This project
+analyses three of them, namely KNN, Random Forest
+Classifier and SVM.</p>
+<p><strong>KNN Classifier</strong></p>
+<p>KNN classifier is a simple supervised ML model which is
+mostly used for classification. The model memorizes the
+training set and uses a voting system when presented with a
+test data point; the K nearest data points to the test point
+participate in the vote and the majority classification type of
+the data points wins. The metric that determines the distance
+can be programmed to be euclidean, manhattan, chebychev
+and a few others. Since this model is very sensitive to distance
+between the points, it is crucial to normalize the data to a
+common scale. K is a hyperparameter that can be tuned by the
+programmer. For best results, it is usually set to be an odd
+number. K can be tuned experimentally to obtain the best
+results however, it is normally taken to be anywhere close to
+the square root of the number of data points. It is important to
+ensure that the correct value is chosen without over or under
+fitting the data (by choosing K too small or too big)</p>
+<p><strong>Random Forest Classifier</strong></p>
+<p>This model uses a collection of decision trees. A decision tree
+is a tree like structure that has branches and nodes. Each node
+is split based on its attribute. When a new data point must be
+tested, it traverses sequentially from the root till the end (the
+leaf), and it is classified based on it. Every time it hits a node
+along the way, it must satisfy a certain condition. For
+example, “if green, go to the left, if blue go to the right”. In order to ensure that the
+decision tree does not over-fit, the maximum depth should be
+regularized. Unlike KNN, decision trees do not require the
+data be normalized.  A random forest is a
+collection of decision trees that are uncorrelated that act
+together as an ensemble. When testing a data point for
+classification, each decision tree will make a classification
+prediction, and the classification the gets the majority votes
+win.</p>
+<p><strong>SVM</strong></p>
+<p>The SVM model can perform linear or non-linear
+classification, regression and even outlier detection [6]. When
+doing binary classification, for example, if the two classes can
+be separated by a straight line, they are said to be linearly
+separable. If they are not linearly separable, a solution is to
+use polynomial features that might make the data set linearly
+separable.</p>
+<figure>
+    <img src="/images/linear.png"/> <figcaption>
+            <h4>‍  ‍  ‍ ‍  ‍  ‍  ‍ ‍  ‍  ‍  ‍ ‍  ‍  ‍  ‍ ‍  ‍  ‍  ‍ ‍  ‍  ‍  ‍ ‍  ‍  ‍  ‍ ‍  ‍  ‍  ‍ ‍  ‍  ‍    Linearly separable data</h4>
+        </figcaption>
+</figure>
+
+<p>The straight line represents the boundary that separate these
+linearly separable data. However, there are infinitely many
+lines that satisfy this problem. The best line to choose is the
+one that has the greatest distance between itself and the points
+closest to it. However, this is not practically possible since data
+does not come perfectly separable like this. The solution is to
+allow a small number of data points to be misclassified. This
+is controlled by a parameter called C, the cost of
+misclassification. The higher the value of C the less prone data
+points will be misclassified. It is important to note that a value
+of C too high will cause overfitting. If the data points are not
+linearly separable, the SVM model will try to find a boundary
+that will maximize the margin with its nearest data points, this
+is referred to as the kernel trick. The essence of the kernel trick
+is in mapping the classification problem into a metric space in
+which the problem has a simple separation boundary but complex in the original one [7]</p>
+<figure>
+    <img src="/images/non.png"/> <figcaption>
+            <h4>‍‍  ‍  ‍ ‍  ‍  ‍  ‍ ‍    ‍  ‍ ‍  ‍  ‍  ‍ ‍  ‍  ‍  ‍ ‍  ‍  ‍  ‍ ‍  ‍  ‍  ‍ ‍  Kernel trick on non-separable data</h4>
+        </figcaption>
+</figure>
+
+<p><em><strong>Experimental Results</strong></em></p>
+<p>In all the models tested, the reduced data set that consists of
+5 features and 3 dimensions (discussed in section III) have
+been used. The data set has been split into train and test sets
+with a ratio of 3:1. In order to ensure that the model is not
+biased and that there is absolutely no data leakage, the
+hyperparameters are tuned on the training set only by using
+cross validation with a stratified K fold with 3 splits. Cross
+validation ensures that there is no bias when splitting the data
+set. In this case, it is split three times with a test, train and
+validation set. The resulting score is the average of the three
+folds. It is important to note that the cross-validation score is
+not the final result of the experiment. This is because the
+hyperparameters have been specifically tuned for the fitted set
+and therefore it would be meaningless to assume that, when
+the model is presented with a data it has not seen before, will
+perform equally well. As a result, the score will be evaluated
+on the score of the test set. To further ensure that the model is
+unbiased, the normalization of the training set and testing set
+is done separately. Pipelines was used as a convenient way to
+do this (it automatically normalizes the train and test sets
+separately) along with choosing the model type,
+normalization type and PCA all grouped into one function.
+Since classifying patients that have heart disease as positive
+is very important as it’s a matter of life or death, more
+emphasis is placed on the F1 score, although ideally, recall is
+the score that needs to be optimized. However, it is found that
+too much emphasis on recall lowers the precision. This is not
+ideal since classifying many healthy patients with a heart
+disease will render the test meaningless.</p>
+<!-- raw HTML omitted -->
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Metric ‎‎‎‎‎‎‎‎   ‍  ‍ ‍  ‍   ‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎  ‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎</th>
+<th style="text-align:center">KNN      ‍  ‍ ‍  ‍</th>
+<th style="text-align:center">Random Forest</th>
+<th style="text-align:center">‍  ‍  ‍  ‍SVM</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Time (ms)</td>
+<td style="text-align:center">23.5</td>
+<td style="text-align:center">443</td>
+<td style="text-align:center">53</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center">F1 Score (%)</td>
+<td style="text-align:center">80.4</td>
+<td style="text-align:center">86</td>
+<td style="text-align:center">83.8</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center">Accuracy (%)</td>
+<td style="text-align:center">76.3</td>
+<td style="text-align:center">82.9</td>
+<td style="text-align:center">80.3</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center">Recall (%)</td>
+<td style="text-align:center">86</td>
+<td style="text-align:center">93.1</td>
+<td style="text-align:center">90.6</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center">ROC_AUC</td>
+<td style="text-align:center">0.83</td>
+<td style="text-align:center">0.87</td>
+<td style="text-align:center">0.87</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<!-- raw HTML omitted -->
+<p>The code was run on an HP laptop with 8GB ram with an Intel
+processor core i7-8550U @ 2GHz. In order to avoid overfitting, all models have been regularized.</p>
+<p><em><strong>Discussion and Conclusion</strong></em></p>
+<p>In this project three different classification models have been
+analyzed. The data set was reduced to the best five features
+using SelectKBest and down to three dimensions using PCA.
+Accuracy score in predicting heart disease in patients is not a
+reliable metric. This is because it is crucial to positively
+diagnose patients that actually have heart disease, even if a
+small number of patients that do not carry it are identified as
+positive. However, too much of the later will result in an
+unreliable test. Therefore, the F1 metric which is a harmonic
+ratio between precision and recall is best. Analyzing Table III
+shows that the random forest model performs best but with a
+time penalty. KNN performs the fastest but with slightly
+worst (but still acceptable) results. SVM seems to perform
+approximately 9 times faster than random forest with results
+that closely match with it. Comparing the results to a recently
+published article by Agarwal et al. [8] show that their F1 score
+for Random Forest is 90.9 using all 13 features and without
+any dimension reduction. This is only 5% more accuracy than
+the one obtained here with 5 features and 3 dimensions.
+Although the other models used in this project are different
+than theirs, generally only a 5% loss in almost all metrics is
+achieved.</p>
+<ul class="pa0">
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="" >
+    &copy;  Home 2021 
+  </a>
+    <div>
+
+
+
+
+
+
+
+<a href="https://www.linkedin.com/in/issam-b-alameddine-320915204/" target="_blank" class="link-transition linkedin link dib z-999 pt3 pt0-l mr1" title="LinkedIn link" rel="noopener" aria-label="follow on LinkedIn——Opens in a new window">
+  <svg  height="32px"  style="enable-background:new 0 0 65 65;" version="1.1" viewBox="0 0 65 65" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <path d="M50.837,48.137V36.425c0-6.275-3.35-9.195-7.816-9.195  c-3.604,0-5.219,1.983-6.119,3.374V27.71h-6.79c0.09,1.917,0,20.427,0,20.427h6.79V36.729c0-0.609,0.044-1.219,0.224-1.655  c0.49-1.22,1.607-2.483,3.482-2.483c2.458,0,3.44,1.873,3.44,4.618v10.929H50.837z M22.959,24.922c2.367,0,3.842-1.57,3.842-3.531  c-0.044-2.003-1.475-3.528-3.797-3.528s-3.841,1.524-3.841,3.528c0,1.961,1.474,3.531,3.753,3.531H22.959z M34,64  C17.432,64,4,50.568,4,34C4,17.431,17.432,4,34,4s30,13.431,30,30C64,50.568,50.568,64,34,64z M26.354,48.137V27.71h-6.789v20.427  H26.354z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/>
+</svg>
+
+<span class="new-window"><svg  height="8px"  style="enable-background:new 0 0 1000 1000;" version="1.1" viewBox="0 0 1000 1000" width="8px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+<path d="M598 128h298v298h-86v-152l-418 418-60-60 418-418h-152v-86zM810 810v-298h86v298c0 46-40 86-86 86h-596c-48 0-86-40-86-86v-596c0-46 38-86 86-86h298v86h-298v596h596z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/>
+</svg>
+</span></a>
+
+
+<a href="https://github.com/vxky19" target="_blank" class="link-transition github link dib z-999 pt3 pt0-l mr1" title="Github link" rel="noopener" aria-label="follow on Github——Opens in a new window">
+  <svg  height="32px"  style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+  <path d="M256,32C132.3,32,32,134.8,32,261.7c0,101.5,64.2,187.5,153.2,217.9c11.2,2.1,15.3-5,15.3-11.1   c0-5.5-0.2-19.9-0.3-39.1c-62.3,13.9-75.5-30.8-75.5-30.8c-10.2-26.5-24.9-33.6-24.9-33.6c-20.3-14.3,1.5-14,1.5-14   c22.5,1.6,34.3,23.7,34.3,23.7c20,35.1,52.4,25,65.2,19.1c2-14.8,7.8-25,14.2-30.7c-49.7-5.8-102-25.5-102-113.5   c0-25.1,8.7-45.6,23-61.6c-2.3-5.8-10-29.2,2.2-60.8c0,0,18.8-6.2,61.6,23.5c17.9-5.1,37-7.6,56.1-7.7c19,0.1,38.2,2.6,56.1,7.7   c42.8-29.7,61.5-23.5,61.5-23.5c12.2,31.6,4.5,55,2.2,60.8c14.3,16.1,23,36.6,23,61.6c0,88.2-52.4,107.6-102.3,113.3   c8,7.1,15.2,21.1,15.2,42.5c0,30.7-0.3,55.5-0.3,63c0,6.1,4,13.3,15.4,11C415.9,449.1,480,363.1,480,261.7   C480,134.8,379.7,32,256,32z"/>
+</svg>
+
+<span class="new-window"><svg  height="8px"  style="enable-background:new 0 0 1000 1000;" version="1.1" viewBox="0 0 1000 1000" width="8px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+<path d="M598 128h298v298h-86v-152l-418 418-60-60 418-418h-152v-86zM810 810v-298h86v298c0 46-40 86-86 86h-596c-48 0-86-40-86-86v-596c0-46 38-86 86-86h298v86h-298v596h596z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/>
+</svg>
+</span></a>
+
+
+
+
+
+
+
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>

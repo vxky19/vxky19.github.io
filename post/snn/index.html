@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Spiking Neural Networks | Home</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="Neural Networks">
+    <meta name="generator" content="Hugo 0.80.0" />
+    
+    
+      <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+    
+
+    
+
+  
+  
+    <link rel="stylesheet" href="/ananke/dist/main.css_5c99d70a7725bacd4c701e995b969fea.css" >
+  
+
+
+
+
+    
+      
+
+    
+
+    
+    
+    <meta property="og:title" content="Spiking Neural Networks" />
+<meta property="og:description" content="Neural Networks" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/snn/" />
+<meta property="article:published_time" content="2019-08-21T18:00:05-04:00" />
+<meta property="article:modified_time" content="2019-08-21T18:00:05-04:00" /><meta property="og:site_name" content="Home" />
+<meta itemprop="name" content="Spiking Neural Networks">
+<meta itemprop="description" content="Neural Networks">
+<meta itemprop="datePublished" content="2019-08-21T18:00:05-04:00" />
+<meta itemprop="dateModified" content="2019-08-21T18:00:05-04:00" />
+<meta itemprop="wordCount" content="2144">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Spiking Neural Networks"/>
+<meta name="twitter:description" content="Neural Networks"/>
+
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS_HTML">
+</script>
+
+  </head>
+
+  <body class="ma0 avenir bg-near-white">
+
+    
+   
+  
+
+  
+  
+  <header class="cover bg-top" style="background-image: url('images/snn.jpeg');">
+    <div class="pb3-m pb6-l bg-black-60">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="/" class="f3 fw2 hover-white no-underline white-90 dib">
+      
+        Home
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+        <ul class="pl0 mr3">
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/about/" title="About Me page">
+              About Me
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/contact/" title="Contact page">
+              Contact
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/post/" title="Projects page">
+              Projects
+            </a>
+          </li>
+          
+        </ul>
+      
+      
+
+
+
+
+
+
+
+<a href="https://www.linkedin.com/in/issam-b-alameddine-320915204/" target="_blank" class="link-transition linkedin link dib z-999 pt3 pt0-l mr1" title="LinkedIn link" rel="noopener" aria-label="follow on LinkedIn——Opens in a new window">
+  <svg  height="32px"  style="enable-background:new 0 0 65 65;" version="1.1" viewBox="0 0 65 65" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <path d="M50.837,48.137V36.425c0-6.275-3.35-9.195-7.816-9.195  c-3.604,0-5.219,1.983-6.119,3.374V27.71h-6.79c0.09,1.917,0,20.427,0,20.427h6.79V36.729c0-0.609,0.044-1.219,0.224-1.655  c0.49-1.22,1.607-2.483,3.482-2.483c2.458,0,3.44,1.873,3.44,4.618v10.929H50.837z M22.959,24.922c2.367,0,3.842-1.57,3.842-3.531  c-0.044-2.003-1.475-3.528-3.797-3.528s-3.841,1.524-3.841,3.528c0,1.961,1.474,3.531,3.753,3.531H22.959z M34,64  C17.432,64,4,50.568,4,34C4,17.431,17.432,4,34,4s30,13.431,30,30C64,50.568,50.568,64,34,64z M26.354,48.137V27.71h-6.789v20.427  H26.354z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/>
+</svg>
+
+<span class="new-window"><svg  height="8px"  style="enable-background:new 0 0 1000 1000;" version="1.1" viewBox="0 0 1000 1000" width="8px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+<path d="M598 128h298v298h-86v-152l-418 418-60-60 418-418h-152v-86zM810 810v-298h86v298c0 46-40 86-86 86h-596c-48 0-86-40-86-86v-596c0-46 38-86 86-86h298v86h-298v596h596z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/>
+</svg>
+</span></a>
+
+
+<a href="https://github.com/vxky19" target="_blank" class="link-transition github link dib z-999 pt3 pt0-l mr1" title="Github link" rel="noopener" aria-label="follow on Github——Opens in a new window">
+  <svg  height="32px"  style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+  <path d="M256,32C132.3,32,32,134.8,32,261.7c0,101.5,64.2,187.5,153.2,217.9c11.2,2.1,15.3-5,15.3-11.1   c0-5.5-0.2-19.9-0.3-39.1c-62.3,13.9-75.5-30.8-75.5-30.8c-10.2-26.5-24.9-33.6-24.9-33.6c-20.3-14.3,1.5-14,1.5-14   c22.5,1.6,34.3,23.7,34.3,23.7c20,35.1,52.4,25,65.2,19.1c2-14.8,7.8-25,14.2-30.7c-49.7-5.8-102-25.5-102-113.5   c0-25.1,8.7-45.6,23-61.6c-2.3-5.8-10-29.2,2.2-60.8c0,0,18.8-6.2,61.6,23.5c17.9-5.1,37-7.6,56.1-7.7c19,0.1,38.2,2.6,56.1,7.7   c42.8-29.7,61.5-23.5,61.5-23.5c12.2,31.6,4.5,55,2.2,60.8c14.3,16.1,23,36.6,23,61.6c0,88.2-52.4,107.6-102.3,113.3   c8,7.1,15.2,21.1,15.2,42.5c0,30.7-0.3,55.5-0.3,63c0,6.1,4,13.3,15.4,11C415.9,449.1,480,363.1,480,261.7   C480,134.8,379.7,32,256,32z"/>
+</svg>
+
+<span class="new-window"><svg  height="8px"  style="enable-background:new 0 0 1000 1000;" version="1.1" viewBox="0 0 1000 1000" width="8px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+<path d="M598 128h298v298h-86v-152l-418 418-60-60 418-418h-152v-86zM810 810v-298h86v298c0 46-40 86-86 86h-596c-48 0-86-40-86-86v-596c0-46 38-86 86-86h298v86h-298v596h596z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/>
+</svg>
+</span></a>
+
+
+
+
+
+
+
+
+    </div>
+  </div>
+</nav>
+
+      <div class="tc-l pv6 ph3 ph4-ns">
+        
+          <h1 class="f2 f1-l fw2 white-90 mb0 lh-title">Spiking Neural Networks</h1>
+          
+            <h2 class="fw1 f5 f3-l white-80 measure-wide-l center lh-copy mt3 mb4">
+              Neural Networks
+            </h2>
+          
+        
+      </div>
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  <article class="flex-l flex-wrap justify-between mw8 center ph3">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked">
+          
+        PROJECTS
+      </aside>
+      
+
+
+
+
+  <div id="sharing" class="mt3">
+
+    
+    <a href="https://www.facebook.com/sharer.php?u=/post/snn/" class="facebook no-underline" aria-label="share on Facebook">
+      <svg height="32px"  style="enable-background:new 0 0 67 67;" version="1.1" viewBox="0 0 67 67" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M28.765,50.32h6.744V33.998h4.499l0.596-5.624h-5.095  l0.007-2.816c0-1.466,0.14-2.253,2.244-2.253h2.812V17.68h-4.5c-5.405,0-7.307,2.729-7.307,7.317v3.377h-3.369v5.625h3.369V50.32z   M33,64C16.432,64,3,50.569,3,34S16.432,4,33,4s30,13.431,30,30S49.568,64,33,64z" style="fill-rule:evenodd;clip-rule:evenodd;"/></svg>
+
+    </a>
+
+    
+    
+    <a href="https://twitter.com/share?url=/post/snn/&amp;text=Spiking%20Neural%20Networks" class="twitter no-underline" aria-label="share on Twitter">
+      <svg height="32px"  style="enable-background:new 0 0 67 67;" version="1.1" viewBox="0 0 67 67" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M37.167,22.283c-2.619,0.953-4.274,3.411-4.086,6.101  l0.063,1.038l-1.048-0.127c-3.813-0.487-7.145-2.139-9.974-4.915l-1.383-1.377l-0.356,1.017c-0.754,2.267-0.272,4.661,1.299,6.271  c0.838,0.89,0.649,1.017-0.796,0.487c-0.503-0.169-0.943-0.296-0.985-0.233c-0.146,0.149,0.356,2.076,0.754,2.839  c0.545,1.06,1.655,2.097,2.871,2.712l1.027,0.487l-1.215,0.021c-1.173,0-1.215,0.021-1.089,0.467  c0.419,1.377,2.074,2.839,3.918,3.475l1.299,0.444l-1.131,0.678c-1.676,0.976-3.646,1.526-5.616,1.568  C19.775,43.256,19,43.341,19,43.405c0,0.211,2.557,1.397,4.044,1.864c4.463,1.377,9.765,0.783,13.746-1.568  c2.829-1.673,5.657-5,6.978-8.221c0.713-1.716,1.425-4.851,1.425-6.354c0-0.975,0.063-1.102,1.236-2.267  c0.692-0.678,1.341-1.419,1.467-1.631c0.21-0.403,0.188-0.403-0.88-0.043c-1.781,0.636-2.033,0.551-1.152-0.402  c0.649-0.678,1.425-1.907,1.425-2.267c0-0.063-0.314,0.042-0.671,0.233c-0.377,0.212-1.215,0.53-1.844,0.72l-1.131,0.361l-1.027-0.7  c-0.566-0.381-1.361-0.805-1.781-0.932C39.766,21.902,38.131,21.944,37.167,22.283z M33,64C16.432,64,3,50.569,3,34S16.432,4,33,4  s30,13.431,30,30S49.568,64,33,64z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/></svg>
+
+    </a>
+
+    
+    <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=/post/snn/&amp;title=Spiking%20Neural%20Networks" class="linkedin no-underline" aria-label="share on LinkedIn">
+      <svg  height="32px"  style="enable-background:new 0 0 65 65;" version="1.1" viewBox="0 0 65 65" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <path d="M50.837,48.137V36.425c0-6.275-3.35-9.195-7.816-9.195  c-3.604,0-5.219,1.983-6.119,3.374V27.71h-6.79c0.09,1.917,0,20.427,0,20.427h6.79V36.729c0-0.609,0.044-1.219,0.224-1.655  c0.49-1.22,1.607-2.483,3.482-2.483c2.458,0,3.44,1.873,3.44,4.618v10.929H50.837z M22.959,24.922c2.367,0,3.842-1.57,3.842-3.531  c-0.044-2.003-1.475-3.528-3.797-3.528s-3.841,1.524-3.841,3.528c0,1.961,1.474,3.531,3.753,3.531H22.959z M34,64  C17.432,64,4,50.568,4,34C4,17.431,17.432,4,34,4s30,13.431,30,30C64,50.568,50.568,64,34,64z M26.354,48.137V27.71h-6.789v20.427  H26.354z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/>
+</svg>
+
+    </a>
+  </div>
+
+
+      <h1 class="f1 athelas mt3 mb1">Spiking Neural Networks</h1>
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2019-08-21T18:00:05-04:00">August 21, 2019</time>
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l"><p>Spiking Neural Networks (SNN) is the key to connecting neuroscience and machine learning in a way that is biologically realistic. Unlike previous generations of Artificial Neural Networks (ANN), SNN do not fire at continuous values, but rather fire only when the post synaptic potential reaches a certain value. The generalized Integrate and Fire model and the Hodgkin-Huxley model, the neuron was regarded as a point and did not have any space. Actual biological neurons, however, do have dendrites that possess complicated spatial structures. Moreover, the input is injected explicitly in the form of a simulated current (usually through an electrode). This is not the case with biological neurons since they are embedded in a network where a neuron receives inputs from another neuron. These inputs will be received as a spike in the synapse and consequently induce an output at the post-synaptic side.</p>
+<figure>
+    <img src="/images/fig1.jpg"/> <figcaption>
+            <h4>Fig1.1: A: When a spike arrives, a neurotransmitter is released through the cleft and is received by the postsynaptic Receptor. B: An AMPA receptor. Sodium and potassium ions can propagate to the membrane when glutamate is attached to the membrane. (Neural Dynamics, Cambridge Univ. Press, 2014)</h4>
+        </figcaption>
+</figure>
+
+<h2 id="function-and-types-of-biological-synapses">Function and Types of Biological Synapses</h2>
+<p>At the top part of Fig. 1.1A is the pre-synaptic terminal. It contains vesicles that are loaded with neurotransmitters. Some sit inside and some on the surface. When an action potential travels along an axon and arrives in the form of a spike at the pre-synaptic neuron, some of the vesicles integrate with the membrane and eject neurotransmitters into the cleft (the space between the pre and post synaptic neurons). When the gate receptor (Figure B) captures a neurotransmitter, it opens, and allows the sodium ions to flow in, and the potassium ions to flow out of the cell. There are two types of synapses:<br>
+<em><strong>Excitatory</strong></em>:   An important neurotransmitter at excitatory synapses is glutamate. When it attaches to an AMPA gate receptor, it causes it to open just enough to allow the sodium and potassium ions to flow, but small enough to block calcium for passing through. On the other hand, when it attaches to a NMDA (N-methyl-D-aspartate) channel, calcium can pass through. The dynamics of the NMDA is slower than the AMPA.<br>
+<em><strong>Inhibitory</strong></em>: An important neurotransmitter at inhibitory synapses is the GABA (gamma-aminobutyric acid). It comes in two different channel subtypes: GABA-A and GABA-B.</p>
+<figure>
+    <img src="/images/fig1-2.jpg"/> <figcaption>
+            <h4>Fig 1.2: Post-synaptic current curves of GABA-A, GABA-B, AMPA and NMDA current with a spike at t=0 for a post synaptic potential of -65. (Neural Dynamics, Cambridge Univ. Press, 2014) </h4>
+        </figcaption>
+</figure>
+
+<p>If the spike arrives at an excitatory synapse with many AMPA channels, the current experiences a very rapid rise and decays within a few milliseconds. If the channel contains NMDA, the synaptic current the rise is a bit slower and decays within a few 100ms. For inhibitory synapses, one is fast an the other one is slower. The challenge is to build a model that describes this effective current that flows into the cell when it arrives at the presynaptic terminal.</p>
+<p><em><strong>Silicon Synapses</strong></em> : Analogue VLSI is predominantly used to design artificial neural networks. This is because transistors possess properties like those in nerve membrane channels. It is vital that the design consume very low power since a large network of thousands of neurons will increase power consumption very quickly. A common solution to this problem is to operate the transistors in the weak inversion region, also known as the subthreshold region, where the transistor leaks a very small current in the order of pico-amps to femto-amps. CMOS transistors are the most convenient to use in VLSI design. This is because the CMOS transistors consume low power during idle state where it only drains a very small leakage current, and only consumes current when it is switching state. Other transistors such as BJTs, continuously draw current. Although BJTs operate faster, low power consumption is usually desired. Moreover, CMOS fabrication technology allows the variation of channel dimensions, where length could be reduced to fit more transistors per unit area. A disadvantage that comes with reduced length is that the static power consumption will increase.</p>
+<h2 id="leaky-fire-and-integrate-model">Leaky Fire and Integrate Model</h2>
+<p>A very basic neuron circuit that fires and resets when the output reaches the voltage potential θ. Although very basic, this model is the basis of many neuron circuits and is fundamental in getting familiar with SNN circuits and their behaviour.</p>
+<figure>
+    <img src="/images/fig2-1.jpg"/> <figcaption>
+            <h4>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀Fig 2.1: LIF model</h4>
+        </figcaption>
+</figure>
+
+<p>For the case of a spike input the circuit’s behaviour is described by:</p>
+<p>$$
+\tau\frac{d}{dt}u = -(u-u_{rest})+RI(t) ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀(2.1)          <br>
+$$</p>
+<p>For the linear region, where the potential has not reached the value θ.</p>
+<p>When the potential reaches θ, the output fires and resets as shown below:</p>
+<figure>
+    <img src="/images/fig2-2.png"/> <figcaption>
+            <h4>Figure 2.2: Spike fires and resets when a threshold value θ is reached.</h4>
+        </figcaption>
+</figure>
+
+<h2 id="synapse-mathematical-models">Synapse Mathematical Models</h2>
+<p>Mathematical synaptic conductance moels are to be developed to give an output synaptic current as shown previously in fig 1.2.</p>
+<p>$$
+-I_{syn}(t) = -g_{syn}(t)(u-E_{syn})\tau⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀(2.2)
+$$</p>
+<p>The total synaptic current has a drive which is the difference between the momentary voltage u and the reversal potential of the synapse E_syn. The conductance g_syn (t) is time dependent and it can be thought of as an exponential pulse for convenience, which matches with the synaptic current output AMPA (fig 1.2):</p>
+<p>$$
+g_{syn}(t) =  \bar g_{syn}e^{\frac{t-t_{k}}{\tau} }\Theta(t-t_k)⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀(2.3a)
+$$</p>
+<p>It is this synaptic conductance that is inserted into 2.1, multiplied by the drive which gives the synaptic output. The model can be more realistic when the rise time can be modelled, because biological neurons have two different time constants, where the rising phase is usually faster than its decaying counterpart. A small modification of 2.3 to include the rise time gives:</p>
+<p>$$
+g_{syn}(t) = \sum_{k} \bar ge^{\frac{t-t_{k}}{\tau}}(1-e^{\frac{t-t_{k}}{\tau_{rise}}})\Theta(t-t_k)⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀(2.3b)
+$$</p>
+<p>where the total synaptic conductance can be multiplied with the drive potential which gives the synaptic current. The synaptic current could be inserted in the Hodgkin-Huxley model for example:</p>
+<p>$$
+C\frac{du}{dt}= - g_{Na}m^3h(u_{E_{Na}})-g_l(u-E_1)+I_stim(t) ⠀⠀⠀⠀(2.4)
+$$</p>
+<p>There are two different interpretations to this. One could say, that the total stimulating current I_stim (t) is the current given by 2.2 which means that the output from synaptic current such as the AMPA or NMDA is effectively a positive stimulating current. However, in a real neuron, there is no stimulating current, but channels. Where g_Na,g_K,g_l are the Sodium, Potassium and leak channel respectively, and I_stim (t) is simply an additional channel which naturally has a minus sign (eq. 2.2).</p>
+<p>As discussed previously, glutamate produces an excitatory synapse, and GABA an inhibitory. Both are described by the same equation given in 2.2. However, the difference comes from the reversal potential where for excitatory synapses, it is high E_syn≈0mV and for inhibitory synapses, it is low E_syn≈-75mV.</p>
+<h2 id="fundamental-synapse-circuit-design">Fundamental Synapse Circuit Design</h2>
+<p>A basic, very simple synapse circuit is shown in the figure below. It converts a voltage pulse into a current whose magnitude is controlled by the weight voltage V_w. Naturally, the current’s pulse width is same as the voltage input’s width.</p>
+<figure>
+    <img src="/images/fig2-3.png"/> <figcaption>
+            <h4>⠀⠀⠀⠀Figure 2.3: A simple synapse circuit design</h4>
+        </figcaption>
+</figure>
+
+<p>However, input voltages can be very small in width and uncontrolled in which case, Vτ sets the time constant or pulse width of the current Io as shown below:</p>
+<figure>
+    <img src="/images/fig2-4.png"/> <figcaption>
+            <h4>Figure 2.4: A simple synapse circuit with magnitude and width control</h4>
+        </figcaption>
+</figure>
+
+<p>Synaptic circuits usually have a scaling property. This can either be achieved by using voltage controls or current controls. Figure 2.5a uses the two voltages V_1and V_2 in order to scale the current.</p>
+<figure>
+    <img src="/images/fig2-5a.png"/> <figcaption>
+            <h4>Figure 2.5a: Scaling the current output using two voltage controls</h4>
+        </figcaption>
+</figure>
+
+<p>Typically, the transistors work in the subthreshold region as the exponential property is desired, as well as the very low power requirement. At the subthreshold region, (2.5) describes the operation of the synapse circuit,</p>
+<p>$$
+I_0 = I_i e^{\frac{k(V_1-V_2)}{2V_T} }
+$$</p>
+<p>where V_T is the thermal voltage.</p>
+<p>Scaling of the current by using current controls is done by using the following circuit:</p>
+<figure>
+    <img src="/images/fig2-5b.png"/> <figcaption>
+            <h4>Figure 2.5b: Scaling the current output using two I_1 and I_2</h4>
+        </figcaption>
+</figure>
+
+<p>In this case, the scaling is described by:</p>
+<p>$$
+I_0 = I_i \sqrt(\frac{I_1}{I_2})
+$$</p>
+<p>The scaling property of the circuits in Fig. 2.5a,b can be implemented in synapse circuits where adaptation is required. An example of an adaptive circuit that uses the scaling circuit is shown in figure 2.6. The input of the circuit is the current I_i and the output is I_o which is a scaled version of I_i. The supplementary input of the circuit (indicated with a pulse input to the gate of the transistor) controls the scaling of the output current to be larger than the input current. The If the supplementary input is not active, there is no scaling performed. The voltage V_l sets a limit to the scaling of the current. The supplementary input is used to produce learning algorithms, by substituting it with some logical combination of various inputs.</p>
+<figure>
+    <img src="/images/fig2-6.png"/> <figcaption>
+            <h4>Figure 2.6: An adaptation synapse circuit</h4>
+        </figcaption>
+</figure>
+
+<h2 id="design-and-testing">Design and Testing</h2>
+<p>There are many synapse circuits available and many of them use the current mirror synapse that is simple but not very suitable since it suffers from problems regarding gain transfer, tau and various other parameters. The model presented by Horiuchi, 2004 uses exponential decay using log domain filtering (Frey, 1996) which causes the circuit to behave as an LTI system.</p>
+<p>The CMOS synapse presented by Horiuchi and Shi, 2004, is a circuit where the leak current, synaptic gain and the decaying time constant can be independently controlled. This chapter describes the circuit’s function, along with analysis and simulation results.</p>
+<p>The model provides separate control of the leakage current, synaptic weight and the decaying time constant. It uses the current feedback to obtain a first order behaviour. The circuit consists of five PMOS transistors and three NMOS transistors and a capacitor as shown in figure 3.1.</p>
+<figure>
+    <img src="/images/fig3-1.png"/> <figcaption>
+            <h4>Figure 3.1: CMOS synapse circuit model (Horiuchi and Shi, 2004)</h4>
+        </figcaption>
+</figure>
+
+<p>The action potential is modelled as an input to the synapse circuit as an inverted logic narrow width pulse into the gate of transistor M1. V_τ determines the current that goes through transistor M7. This current, I_τ, is what determines the decaying time constant of the output. Vw determines the magnitude of the synapse (the synaptic weight). M6 converts the voltage across the capacitor into a current. The current mirror formed by M4 and M5 receive the current that is sent through from M6 and pass it through the source follower that is formed by M3 and M4. The drain current of M8 is the inhibitory synaptic current output.
+Bulk terminals of all NMOS transistors are connected to ground and bulk terminals of all PMOS transistors are connected to Vdd except for M3</p>
+<h2 id="subthreshold-characteristics-circuit-analysis-and-simulation">Subthreshold Characteristics: Circuit Analysis and Simulation</h2>
+<p><em><strong>Circuit Analysis</strong></em><br>
+In figure 3.1, the transistors are operating at the subthreshold level (weak inversion region). At this mode of operation, the current-voltage relationship is exponential and is best described by the drain current equation:</p>
+<p>$$
+i_{ds} = S_nI_{0n}e^{\frac{1-k_nv_{gs}}{v_T}}e^{ \frac{(1-k_n)v_{bs}}{v_T} }(1-e^{\frac{-v_{ds}}{v_T}})
+$$</p>
+<p>but</p>
+<p>$$
+i_4 = \frac{S_4i}{S_5}
+$$</p>
+<p>$$
+i_4 = s_3I_{op}e^{\frac{kp(V_w-V)}{v_T}}(1-e^{-\frac{(-V_3)}{V_T})}
+$$</p>
+<p>But V_bs=0 and V_0&gt;4V_T (saturation). for M_3:</p>
+<p>$$
+i_4 = S_3I_{op}[e^(V_w-V)\frac{k_p}{V_T}]
+$$</p>
+<p>$$
+\frac{iS_4}{S_3S_5I_{op}}=e^{V_w-V}\frac{k_p}{V_T}
+$$</p>
+<p>$$
+\ln(\frac{iS_4}{S_3S_5I_{op}}) = (V_w-V)\frac{k_p}{V_T}
+$$</p>
+<p>$$
+V = V_w + \frac{V_T}{k_p}\ln{(\frac{iS_4}{S_3S_5I_op})}
+$$</p>
+<p>$$
+e^{V^{\frac{V_T}{k_p}}} = \frac{iS_4}{S_3S_5I_{op}}e^{V_w\frac{k_p}{V_T}}
+$$</p>
+<p>$$
+i_2 = S_2I_{op}e^{\frac{k_p}{V_T}(V_{dd}-V)}
+$$</p>
+<p>But</p>
+<p>$$
+i = S_6I_{on}e^{\frac{k_nV_c(t)}{V_T}}
+$$</p>
+<p>$$
+e^{-V\frac{V_T}{k_p}}= \frac{S_3S_5I_{op}}{S_4S_6I_{on}}e^{-V_w\frac{k_p}{V_T}}e^{\frac{k_n}{V_T}V_c(t)}
+$$</p>
+<p>$$
+i_2 = \frac{S_2S_3S_5I_{op}^2}{S_4S_6I_{on}}e^{\frac{k_p}{V_T}(V_{dd}-V_w)}
+$$</p>
+<p>Using Kirchoff&rsquo;s current law where:<br>
+$$
+i_c = i_2 - i_\tau
+$$</p>
+<p>where:</p>
+<p>$$
+i_c = C\frac{dV_c(t)}{dt}
+$$</p>
+<p>gives:</p>
+<p>$$
+C\frac{dV_c(t)}{dt} = \frac{S_2S_3S_5I_{op}^2}{S_4S_6I_on}e^{\frac{k_p}{V_T}(V_{dd}-V_w)}-I_\tau
+$$</p>
+<p>$$
+I_\tau = S_7I_{on}e^{\frac{V_\tau}{V_T}k_n}, since, V_{b3}=0, and, V_{d3}&gt;4V_T
+$$</p>
+<p>$$
+i_{syn}(t) = S_8I_{on}e^{\frac{k_n}{V_t}v_c(t)}
+$$</p>
+<p>$$
+\frac{d_{i_{syn}}}{dt} = S_8I_{on}\frac{k_n}{V_T}[\frac{S_2S_3S_5I_{op}^2}{S_4S_6I_{on}C}e^{\frac{k_p(V_{dd}-V_w)}{V_T}}e^{\frac{-k_nV_c(t)}{V_T}}\frac{I_\tau}{C}]e^{\frac{k_n}{V_T}V_c(t)}
+$$</p>
+<p>$$
+\frac{d_{i_{syn}}(t)}{dt}+\frac{k_nI_\tau}{CV_T}i_{syn(t)} = \frac{S_8S_2S_3S_5k_nI_{op}^2}{S_4S_6CV_T}e^{\frac{k_p}{V_T}(V_{dd}-V_w)}
+$$</p>
+<p>$$
+\tau = \frac{CV_T}{K_nI_\tau}
+$$</p>
+<p>but</p>
+<p>$$
+i_{syn}(0) = S_8I_{on}e^{\frac{k_n}{V_T}V_c(0)}
+$$</p>
+<p>$$
+d_{i_{syn}}(\infty)+\frac{k_nI_\tau}{CV_T}i_{syn}(\infty) = \frac{S_2S_3S_5S_8k_nI_{op}^2}{S_4S_6CV_T}e^{\frac{k_p}{V_T}(V_{dd}-V_c)}
+$$</p>
+<p>but</p>
+<p>$$
+\lim_{t \to\infty}\frac{d_{i_{syn}}(t)}{d_t}=0
+$$</p>
+<p>$$
+i_{syn}(\infty) = \frac{S_2S_3S_5S_8k_nI_{op}^2}{S_4S_6I_2}e^{\frac{k_p}{V_T}(V_{dd}-V_w)}
+$$</p>
+<p>$$
+i_{syn}(t) = i_{syn}(t_{pw})e^{\frac{-(t-t_{pw})}{\tau}}
+$$</p>
+<p>where the leakage current is ignored when $$t&gt;t_{pw}$$</p>
+<p><em><strong>Circuit Simulation</strong></em></p>
+<p>Where<br>
+$$
+V_T = \frac{kT}{q}
+$$</p>
+<p>is the thermal voltage and
+$$
+S = \frac{W_n}{L_n}
+$$
+In order to find the technology current I_0n, the gate and source terminals are grounded and the bulk is shorted to the source so that v_bs = v_gs = 0, and the dimensions are set to W = L = 10^-6 so that S = 1. This results in the drain current equation to be simplified to:
+$$
+i_{ds} = I_{0n}(1-e^{-\frac{V_{ds}}{V_T}})
+$$
+The temperature is set to 300K which makes V_T approximately 26mV (where k is Boltzmann&rsquo;s constant and q the elementary charge). However, when V_ds &gt; 4V_T ≈ 0.103V, the exponential approaches zero and therefore
+$$
+i_{ds} ≈ I_{0n} ⠀when⠀ V_{ds}&gt;0.103V⠀ at ⠀300K
+$$
+Simulations are carried to find the technology current of the PMOS and NMOS transistors. As shown in the figures below
+$$
+I_{0n} ≈ 1nA⠀and⠀I_{0p}≈18nA
+$$</p>
+<h2 id="synaptic-strength-and-time-constant">Synaptic Strength and Time Constant</h2>
+<p>The leaking current that is going through M7 determines the decaying time constant of the synaptic output. Tuning the voltage V_τ changes achieves this. The circuit simulated on LT spice is shown below:</p>
+<p><!-- raw HTML omitted --></p>
+<ul class="pa0">
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="" >
+    &copy;  Home 2021 
+  </a>
+    <div>
+
+
+
+
+
+
+
+<a href="https://www.linkedin.com/in/issam-b-alameddine-320915204/" target="_blank" class="link-transition linkedin link dib z-999 pt3 pt0-l mr1" title="LinkedIn link" rel="noopener" aria-label="follow on LinkedIn——Opens in a new window">
+  <svg  height="32px"  style="enable-background:new 0 0 65 65;" version="1.1" viewBox="0 0 65 65" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <path d="M50.837,48.137V36.425c0-6.275-3.35-9.195-7.816-9.195  c-3.604,0-5.219,1.983-6.119,3.374V27.71h-6.79c0.09,1.917,0,20.427,0,20.427h6.79V36.729c0-0.609,0.044-1.219,0.224-1.655  c0.49-1.22,1.607-2.483,3.482-2.483c2.458,0,3.44,1.873,3.44,4.618v10.929H50.837z M22.959,24.922c2.367,0,3.842-1.57,3.842-3.531  c-0.044-2.003-1.475-3.528-3.797-3.528s-3.841,1.524-3.841,3.528c0,1.961,1.474,3.531,3.753,3.531H22.959z M34,64  C17.432,64,4,50.568,4,34C4,17.431,17.432,4,34,4s30,13.431,30,30C64,50.568,50.568,64,34,64z M26.354,48.137V27.71h-6.789v20.427  H26.354z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/>
+</svg>
+
+<span class="new-window"><svg  height="8px"  style="enable-background:new 0 0 1000 1000;" version="1.1" viewBox="0 0 1000 1000" width="8px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+<path d="M598 128h298v298h-86v-152l-418 418-60-60 418-418h-152v-86zM810 810v-298h86v298c0 46-40 86-86 86h-596c-48 0-86-40-86-86v-596c0-46 38-86 86-86h298v86h-298v596h596z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/>
+</svg>
+</span></a>
+
+
+<a href="https://github.com/vxky19" target="_blank" class="link-transition github link dib z-999 pt3 pt0-l mr1" title="Github link" rel="noopener" aria-label="follow on Github——Opens in a new window">
+  <svg  height="32px"  style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+  <path d="M256,32C132.3,32,32,134.8,32,261.7c0,101.5,64.2,187.5,153.2,217.9c11.2,2.1,15.3-5,15.3-11.1   c0-5.5-0.2-19.9-0.3-39.1c-62.3,13.9-75.5-30.8-75.5-30.8c-10.2-26.5-24.9-33.6-24.9-33.6c-20.3-14.3,1.5-14,1.5-14   c22.5,1.6,34.3,23.7,34.3,23.7c20,35.1,52.4,25,65.2,19.1c2-14.8,7.8-25,14.2-30.7c-49.7-5.8-102-25.5-102-113.5   c0-25.1,8.7-45.6,23-61.6c-2.3-5.8-10-29.2,2.2-60.8c0,0,18.8-6.2,61.6,23.5c17.9-5.1,37-7.6,56.1-7.7c19,0.1,38.2,2.6,56.1,7.7   c42.8-29.7,61.5-23.5,61.5-23.5c12.2,31.6,4.5,55,2.2,60.8c14.3,16.1,23,36.6,23,61.6c0,88.2-52.4,107.6-102.3,113.3   c8,7.1,15.2,21.1,15.2,42.5c0,30.7-0.3,55.5-0.3,63c0,6.1,4,13.3,15.4,11C415.9,449.1,480,363.1,480,261.7   C480,134.8,379.7,32,256,32z"/>
+</svg>
+
+<span class="new-window"><svg  height="8px"  style="enable-background:new 0 0 1000 1000;" version="1.1" viewBox="0 0 1000 1000" width="8px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+<path d="M598 128h298v298h-86v-152l-418 418-60-60 418-418h-152v-86zM810 810v-298h86v298c0 46-40 86-86 86h-596c-48 0-86-40-86-86v-596c0-46 38-86 86-86h298v86h-298v596h596z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/>
+</svg>
+</span></a>
+
+
+
+
+
+
+
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>

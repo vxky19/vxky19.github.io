@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Issam B. Alameddine on Home</title>
+    <link>/</link>
+    <description>Recent content in Issam B. Alameddine on Home</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 23 Apr 2021 17:21:30 -0400</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Natural Language Processing with R: Topic Modelling - 622 U.S Presidential Speeches (1789-2010) </title>
+      <link>/post/nlp-topicmodelling/</link>
+      <pubDate>Fri, 23 Apr 2021 17:21:30 -0400</pubDate>
+      
+      <guid>/post/nlp-topicmodelling/</guid>
+      <description>THIS IS A WORK IN PROGRESS
+Source Code (Beta): https://rpubs.com/w85b/757696
+United states of America (USA) plays an influential role at an international level in driving political and economic policies which change several nations. Political analysts and stock markets across the globe often keep a close watch on the USA strategies and their priorities to get early sign of upcoming changes and its impact on businesses and other countries. Speeches delivered by USA presidents has been one the quite common way to get early sense of government policies and priorities.</description>
+    </item>
+    
+    <item>
+      <title>Statistical Analysis with R: Model Selection - EEG Dataset</title>
+      <link>/post/sa/</link>
+      <pubDate>Fri, 12 Mar 2021 17:21:30 -0400</pubDate>
+      
+      <guid>/post/sa/</guid>
+      <description>This article analyses five candidate nonlinear regression models and choosing the one that can best describe the relationship between four brain electroencephalogram (EEG) signals. Model selection is based on Residual Sum of Squares (RSS), Akaike Information Criterion (AIC), Bayesian Information Criterion (BIC), Shapiro-Wilk normality test and residuals distribution plot. After obtaining the parameter estimations, the data set is split and the model with the obtained parameters from the train set is tested.</description>
+    </item>
+    
+    <item>
+      <title>Machine Learning with Python: Classification- Heart Disease Prediction</title>
+      <link>/post/hdp/</link>
+      <pubDate>Fri, 04 Dec 2020 17:56:05 -0400</pubDate>
+      
+      <guid>/post/hdp/</guid>
+      <description>Heart disease is the leading cause of death worldwide and has been so for the past 15 years [1]. This project uses K-Nearest Neighbor, Random Forest Classifier and Support Vector Machines, in an attempt to find the best model that can classify whether a patient has heart disease or not based on various features such as resting blood pressure, age and sex to name a few. Python was used for programming using its various Machine Learning libraries.</description>
+    </item>
+    
+    <item>
+      <title>Spiking Neural Networks</title>
+      <link>/post/snn/</link>
+      <pubDate>Wed, 21 Aug 2019 18:00:05 -0400</pubDate>
+      
+      <guid>/post/snn/</guid>
+      <description>Spiking Neural Networks (SNN) is the key to connecting neuroscience and machine learning in a way that is biologically realistic. Unlike previous generations of Artificial Neural Networks (ANN), SNN do not fire at continuous values, but rather fire only when the post synaptic potential reaches a certain value. The generalized Integrate and Fire model and the Hodgkin-Huxley model, the neuron was regarded as a point and did not have any space.</description>
+    </item>
+    
+    <item>
+      <title>Contact</title>
+      <link>/contact/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/contact/</guid>
+      <description>I would love to hear from you! Drop me a message on alameddi@uni.coventry.ac.uk or reach out to me on LinkedIn and I will get back to you as soon as possible.</description>
+    </item>
+    
+  </channel>
+</rss>
